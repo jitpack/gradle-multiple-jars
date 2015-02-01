@@ -1,0 +1,51 @@
+apply plugin: "java"
+apply plugin: "maven"
+
+group = "com.github.jitpack"
+version = 1.0
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    api
+    impl
+}
+
+sourceSets.all { set ->
+    def jarTask = task("${set.name}Jar", type: Jar) {
+        baseName = baseName + "-$set.name"
+        from set.output
+    }
+
+    artifacts {
+        archives jarTask
+    }
+}
+
+dependencies {
+    apiCompile 'commons-codec:commons-codec:1.5'
+
+    implCompile sourceSets.api.output
+    implCompile 'commons-lang:commons-lang:2.6'
+
+    testCompile 'junit:junit:4.9'
+    testCompile sourceSets.api.output
+    testCompile sourceSets.impl.output
+    
+    runtime configurations.apiRuntime
+    runtime configurations.implRuntime
+}
+
+jar {
+    from sourceSets.api.output
+    from sourceSets.impl.output
+}
+
+install {
+    repositories.mavenInstaller {
+		addFilter('api') { artifact, file -> artifact.name.endsWith('api') }
+		addFilter('impl') { artifact, file -> artifact.name.endsWith('impl') }
+    }
+}
