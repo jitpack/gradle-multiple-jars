@@ -6,6 +6,6 @@ Example Gradle project producing two jars from single source directory:
 
 Both jars are installed to local maven reactor with:
 
-    mvn install
+    gradle install
     
     
