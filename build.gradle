@@ -17,7 +17,7 @@ sourceSets {
 
 sourceSets.all { set ->
     def jarTask = task("${set.name}Jar", type: Jar) {
-        baseName = baseName + "-$set.name"
+        baseName = "$set.name"
         from set.output
     }
 
