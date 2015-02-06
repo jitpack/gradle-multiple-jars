@@ -9,7 +9,7 @@ Both jars are installed to local maven reactor with:
     gradle install
     
     
-To install them use the following syntax:
+To add them to build.gradle use the following syntax:
 
 ```gradle 
  compile 'com.github.jitpack:gradle-multiple-jars.api:1.0'
