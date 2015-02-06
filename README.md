@@ -12,6 +12,6 @@ Both jars are installed to local maven reactor with:
 To add them to build.gradle use the following syntax:
 
 ```gradle 
- compile 'com.github.jitpack:gradle-multiple-jars.api:1.0'
- compile 'com.github.jitpack:gradle-multiple-jars.impl:1.0'
+ compile 'com.github.jitpack:gradle-multiple-jars.api:1.0.1'
+ compile 'com.github.jitpack:gradle-multiple-jars.impl:1.0.1'
 ```
